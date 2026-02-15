@@ -1,0 +1,8 @@
+node_modules/
+
+# entorno virtual
+.env
+
+# carpetas que se generan al compilar el código
+dist/
+build/
