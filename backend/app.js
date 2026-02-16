@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dns = require('dns');
+const recipeRoutes = require('./src/routes/routes');
 require('dotenv').config(); 
 
 const app = express();
@@ -17,13 +18,7 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error('ocurrió un error al conectar a mongoDB:', err));
 
 // rutas
-app.get('/', (req, res) => {
-  res.send('api para cookbook propio');
-});
-
-app.get('/recetas', (req, res) => {
-  res.send('recetas (wip)');
-});
+app.use('/api/recetas', recipeRoutes);
 
 // iniciar servidor
 app.listen(PORT, () => {

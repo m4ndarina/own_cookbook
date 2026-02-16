@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
+const { nanoid } = require('nanoid');
 
 const recipeSchema = new mongoose.Schema({
+  _id: {
+    type: String,
+    default: () => nanoid(10)
+  },
   name: {
     type: String,
     required: [true, 'El nombre es obligatorio']
@@ -19,7 +24,7 @@ const recipeSchema = new mongoose.Schema({
   }],
   imageUrl: {
     type: String,
-    default: 'https://via.placeholder.com/300' // imagen por defecto
+    default: 'https://placehold.co/400x400' // imagen por defecto
   },
   createdAt: {
     type: Date,
