@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getRecetas } from '../services/api';
 
-function home() {
+function Home() {
   const [recetas, setRecetas] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -30,7 +31,9 @@ function home() {
       ) : (
         <ul>
           {recetas.map((receta) => (
-            <li key={receta._id}>{receta.name}</li>
+            <li key={receta._id}>
+              <Link to={`/recipe/${receta._id}`}>{receta.name}</Link>
+            </li>
           ))}
         </ul>
       )}
@@ -38,4 +41,4 @@ function home() {
   );
 }
 
-export default home;
+export default Home;
